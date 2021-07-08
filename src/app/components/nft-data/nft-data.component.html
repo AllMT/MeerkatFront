@@ -20,15 +20,20 @@
         <p>{{token.Owner.value}}</p>
     </div>
 
+    <div *ngIf="loaded">
+        <button  class="my-token-button" mat-flat-button (click)="viewLockedContent()">    
+            <span class="material-icons">lock</span>
+        </button>
 
-    <div class="token-options-container" *ngIf="isMine">
-        <button class="my-token-button" mat-flat-button *ngIf="token.IsListed" (click)="removeListing()">Remove listing</button>
-        <button class="my-token-button" mat-flat-button *ngIf="!token.IsListed" (click)="list()">List Token</button>
-        <button class="my-token-button" mat-flat-button (click)="burn()">Burn</button>
-    </div>
+        <div class="token-options-container" *ngIf="isMine">
+            <button class="my-token-button" mat-flat-button *ngIf="token.IsListed" (click)="removeListing()">Remove listing</button>
+            <button class="my-token-button" mat-flat-button *ngIf="!token.IsListed" (click)="list()">List Token</button>
+            <button class="my-token-button" mat-flat-button (click)="burn()">Burn</button>
+        </div>
 
-    <div class="token-options-container" *ngIf="!isMine">
-        <button class="my-token-button" mat-flat-button (click)="buy()">Buy</button>
+        <div class="token-options-container" *ngIf="!isMine">
+            <button class="my-token-button" mat-flat-button (click)="buy()">Buy</button>
+        </div>
     </div>
     
 </div>

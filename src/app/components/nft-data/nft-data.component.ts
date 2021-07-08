@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { T3Service } from 'src/app/dapp/t3/t3.service';
 import { TokenStateService } from 'src/app/dapp/token-state/token-state.service';
 import { ListTokenComponent } from './list-token/list-token.component';
+import { LockedContentComponent } from './locked-content/locked-content.component';
 
 @Component({
   selector: 'app-nft-data',
@@ -12,6 +13,8 @@ import { ListTokenComponent } from './list-token/list-token.component';
   styleUrls: ['./nft-data.component.less']
 })
 export class NftDataComponent implements OnInit {
+
+  loaded: boolean;
 
   token: TokenStateService;
   categoryUrl: string;
@@ -36,6 +39,7 @@ export class NftDataComponent implements OnInit {
               {
                 if(result)
                 {
+                  this.loaded = true;
                   this.token = result;
                   this.categoryUrl = "category/" + this.token.Category.toLocaleLowerCase();
 
@@ -77,5 +81,10 @@ export class NftDataComponent implements OnInit {
       {
         this.snackBar.open("Successfully removed the listing", '', {duration: 3000})
     });
+  }
+
+  viewLockedContent()
+  {
+    this.dialog.open(LockedContentComponent, {data: this.token.LockedContent});
   }
 }

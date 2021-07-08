@@ -19,6 +19,8 @@ export class T3Service {
 
   constructor() {
 
+    
+
     window.addEventListener("NEOLine.NEO.EVENT.READY", async () => {
       this.neoLine = await NeoLineN3Init();
       

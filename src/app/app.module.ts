@@ -20,6 +20,7 @@ import { MyTokensComponent } from './components/dashboard/my-tokens/my-tokens.co
 import { NftDataComponent } from './components/nft-data/nft-data.component';
 import { ListTokenComponent } from './components/nft-data/list-token/list-token.component';
 import { CategoryComponent } from './components/category/category.component';
+import { LockedContentComponent } from './components/nft-data/locked-content/locked-content.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { CategoryComponent } from './components/category/category.component';
     MyTokensComponent,
     NftDataComponent,
     ListTokenComponent,
-    CategoryComponent
+    CategoryComponent,
+    LockedContentComponent
   ],
   imports: [
     BrowserModule,
