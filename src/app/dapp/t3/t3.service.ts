@@ -109,32 +109,44 @@ export class T3Service {
         });
    }
 
-   getLatestArtTokensFromContract(): Promise<TokenStateService[]>
+   getTokensFromContract(category: string): Promise<TokenStateService[]>
    {
-     if (this.neoLine === null || this.neoLine === undefined)
+     if(category === "art")
      {
-       return new Promise(function(resolve, reject)  { resolve([])});
+       return this.getLatestCategoryTokensFromContract("getLatestArtTokensByIndex");
      }
-
-      return this.neoLine.invokeRead(
-        { 
-          scriptHash: this.CONTRACT,
-          operation: "getLatestArtTokensByIndex",
-          args: [],
-          signers: []
-        }).then(result => 
-        {
-          var tokens = [];
-
-          (<any>result.stack[0].value).forEach(element => {
-            tokens.push(new TokenStateService(this.neoLine, element.value));
-          });
-
-          return tokens;
-        });
+     else if(category === "collectibles")
+     {
+       return this.getLatestCategoryTokensFromContract("getLatestCollectiblesTokensByIndex");
+     }
+     else if(category === "virtualworls")
+     {
+       return this.getLatestCategoryTokensFromContract("getLatestVirtualWorldTokensByIndex");
+     }
+     else if(category === "domainnames")
+     {
+       return this.getLatestCategoryTokensFromContract("getLatestDomainNamesTokensByIndex");
+     }
+     else if(category === "sports")
+     {
+       return this.getLatestCategoryTokensFromContract("getLatestSportsTokensByIndex");
+     }
+     else if(category === "tradingcards")
+     {
+       return this.getLatestCategoryTokensFromContract("getLatestTradingCardsTokensByIndex");
+     }
+     else if(category === "utility")
+     {
+       return this.getLatestCategoryTokensFromContract("getLatestUtilitiyTokensByIndex");
+     }
+     else if(category === "music")
+     {
+       return this.getLatestCategoryTokensFromContract("getLatestMusicTokensByIndex");
+     }
+     return this.getLatestTokensFromContract();
    }
 
-   getLatestCollectiblesTokensFromContract(): Promise<TokenStateService[]>
+   getLatestCategoryTokensFromContract(operation: string): Promise<TokenStateService[]>
    {
      if (this.neoLine === null || this.neoLine === undefined)
      {
@@ -144,157 +156,7 @@ export class T3Service {
       return this.neoLine.invokeRead(
         { 
           scriptHash: this.CONTRACT,
-          operation: "getLatestCollectiblesTokensByIndex",
-          args: [],
-          signers: []
-        }).then(result => 
-        {
-          var tokens = [];
-
-          (<any>result.stack[0].value).forEach(element => {
-            tokens.push(new TokenStateService(this.neoLine, element.value));
-          });
-
-          return tokens;
-        });
-   }
-
-   getLatestVirtualWorldsTokensFromContract(): Promise<TokenStateService[]>
-   {
-     if (this.neoLine === null || this.neoLine === undefined)
-     {
-       return new Promise(function(resolve, reject)  { resolve([])});
-     }
-
-      return this.neoLine.invokeRead(
-        { 
-          scriptHash: this.CONTRACT,
-          operation: "getLatestVirtualWorldTokensByIndex",
-          args: [],
-          signers: []
-        }).then(result => 
-        {
-          var tokens = [];
-
-          (<any>result.stack[0].value).forEach(element => {
-            tokens.push(new TokenStateService(this.neoLine, element.value));
-          });
-
-          return tokens;
-        });
-   }
-
-   getLatestDomainNamesTokensFromContract(): Promise<TokenStateService[]>
-   {
-     if (this.neoLine === null || this.neoLine === undefined)
-     {
-       return new Promise(function(resolve, reject)  { resolve([])});
-     }
-
-      return this.neoLine.invokeRead(
-        { 
-          scriptHash: this.CONTRACT,
-          operation: "getLatestDomainNamesTokensByIndex",
-          args: [],
-          signers: []
-        }).then(result => 
-        {
-          var tokens = [];
-
-          (<any>result.stack[0].value).forEach(element => {
-            tokens.push(new TokenStateService(this.neoLine, element.value));
-          });
-
-          return tokens;
-        });
-   }
-
-   getLatestSportsTokensFromContract(): Promise<TokenStateService[]>
-   {
-     if (this.neoLine === null || this.neoLine === undefined)
-     {
-       return new Promise(function(resolve, reject)  { resolve([])});
-     }
-
-      return this.neoLine.invokeRead(
-        { 
-          scriptHash: this.CONTRACT,
-          operation: "getLatestSportsTokensByIndex",
-          args: [],
-          signers: []
-        }).then(result => 
-        {
-          var tokens = [];
-
-          (<any>result.stack[0].value).forEach(element => {
-            tokens.push(new TokenStateService(this.neoLine, element.value));
-          });
-
-          return tokens;
-        });
-   }
-
-   getLatestTradingCardsTokensFromContract(): Promise<TokenStateService[]>
-   {
-     if (this.neoLine === null || this.neoLine === undefined)
-     {
-       return new Promise(function(resolve, reject)  { resolve([])});
-     }
-
-      return this.neoLine.invokeRead(
-        { 
-          scriptHash: this.CONTRACT,
-          operation: "getLatestTradingCardsTokensByIndex",
-          args: [],
-          signers: []
-        }).then(result => 
-        {
-          var tokens = [];
-
-          (<any>result.stack[0].value).forEach(element => {
-            tokens.push(new TokenStateService(this.neoLine, element.value));
-          });
-
-          return tokens;
-        });
-   }
-
-   getLatestUtilitiesTokensFromContract(): Promise<TokenStateService[]>
-   {
-     if (this.neoLine === null || this.neoLine === undefined)
-     {
-       return new Promise(function(resolve, reject)  { resolve([])});
-     }
-
-      return this.neoLine.invokeRead(
-        { 
-          scriptHash: this.CONTRACT,
-          operation: "getLatestUtilitiyTokensByIndex",
-          args: [],
-          signers: []
-        }).then(result => 
-        {
-          var tokens = [];
-
-          (<any>result.stack[0].value).forEach(element => {
-            tokens.push(new TokenStateService(this.neoLine, element.value));
-          });
-
-          return tokens;
-        });
-   }
-
-   getLatestMusicTokensFromContract(): Promise<TokenStateService[]>
-   {
-     if (this.neoLine === null || this.neoLine === undefined)
-     {
-       return new Promise(function(resolve, reject)  { resolve([])});
-     }
-
-      return this.neoLine.invokeRead(
-        { 
-          scriptHash: this.CONTRACT,
-          operation: "getLatestMusicTokensByIndex",
+          operation: operation,
           args: [],
           signers: []
         }).then(result => 

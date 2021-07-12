@@ -34,7 +34,7 @@ export class CategoryComponent implements OnInit {
           if(this.category.toLocaleLowerCase() === "art")
           {
             this.title = "Latest Art NFTs";
-            this.T3.getLatestArtTokensFromContract()
+            this.T3.getTokensFromContract("art")
             .then(result => this.tokens = result);
           }
           else if(this.category.toLocaleLowerCase() === "latest")
@@ -46,43 +46,43 @@ export class CategoryComponent implements OnInit {
           else if(this.category.toLocaleLowerCase() === "music")
           {
             this.title = "Latest Music NFTs";
-            this.T3.getLatestMusicTokensFromContract()
+            this.T3.getTokensFromContract("music")
             .then(result => this.tokens = result);
           }
           else if(this.category.toLocaleLowerCase() === "domainnames")
           {
             this.title = "Latest Domain Names NFTs";
-            this.T3.getLatestDomainNamesTokensFromContract()
+            this.T3.getTokensFromContract("domainnames")
             .then(result => this.tokens = result);
           }
           else if(this.category.toLocaleLowerCase() === "virtualworls")
           {
             this.title = "Latest Virtual World NFTs";
-            this.T3.getLatestVirtualWorldsTokensFromContract()
+            this.T3.getTokensFromContract("virtualworls")
             .then(result => this.tokens = result);
           }
           else if(this.category.toLocaleLowerCase() === "tradingcards")
           {
             this.title = "Latest Trading Cards NFTs";
-            this.T3.getLatestTradingCardsTokensFromContract()
+            this.T3.getTokensFromContract("tradingcards")
             .then(result => this.tokens = result);
           }
           else if(this.category.toLocaleLowerCase() === "collectibles")
           {
             this.title = "Latest Collectibles NFTs";
-            this.T3.getLatestCollectiblesTokensFromContract()
+            this.T3.getTokensFromContract("collectibles")
             .then(result => this.tokens = result);
           }
           else if(this.category.toLocaleLowerCase() === "sports")
           {
             this.title = "Latest Sports NFTs";
-            this.T3.getLatestSportsTokensFromContract()
+            this.T3.getTokensFromContract("sports")
             .then(result => this.tokens = result);
           }
           else if(this.category.toLocaleLowerCase() === "utility")
           {
             this.title = "Latest Utilities NFTs";
-            this.T3.getLatestUtilitiesTokensFromContract()
+            this.T3.getTokensFromContract("utility")
             .then(result => this.tokens = result);
           }
         })
