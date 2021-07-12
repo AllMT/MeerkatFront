@@ -21,7 +21,8 @@
     </div>
 
     <div *ngIf="loaded">
-        <button  class="my-token-button" mat-flat-button (click)="viewLockedContent()">    
+
+        <button *ngIf="isMine" class="my-token-button" mat-flat-button (click)="viewLockedContent()">    
             <span class="material-icons">lock</span>
         </button>
 
